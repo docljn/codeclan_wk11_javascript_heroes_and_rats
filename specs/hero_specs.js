@@ -82,9 +82,9 @@ describe("Hero", function () {
       assert.strictEqual(hero.health, 200);
     });
 
-    it("should gain double health if the food eaten is the favourite food", function () {
+    it("should gain 1.5 times normal health if the food eaten is the favourite food", function () {
       hero.eat(marrowBones);
-      assert.strictEqual(hero.health, 150);
+      assert.strictEqual(hero.health, 138);
     });
   });
 
