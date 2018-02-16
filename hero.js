@@ -13,5 +13,9 @@ Hero.prototype.getNumberOfTasks = function () {
   return this.tasks.length;
 };
 
+Hero.prototype.addTask = function (task) {
+  this.tasks.push(task);
+};
+
 
 module.exports = Hero;

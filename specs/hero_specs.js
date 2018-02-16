@@ -10,14 +10,17 @@ A. Create a constructor to create a Hero character
 */
 
 const Hero = require("../hero.js");
+const Task = require("../task.js");
 const assert = require("assert");
 
 describe("Hero", function () {
 
   let hero; //means variable is scoped to describe
+  let task_generic;
 
   beforeEach( function () {
     hero = new Hero("Conan", "marrow bones");
+    task_generic = new Task("description", "reward");
   });
 
   it("should have a name", function () {
@@ -40,11 +43,19 @@ describe("Hero", function () {
     assert.strictEqual(actual, "My name is Conan");
   });
 
-  it("should have a list of tasks to complete, which starts empty", function () {
-    const actual = 0;
-    assert.deepStrictEqual(actual, hero.getNumberOfTasks());
+  describe("task list", function () {
+
+
+    it("should have a list of tasks to complete, which starts empty", function () {
+      const actual = 0;
+      assert.strictEqual(actual, hero.getNumberOfTasks());
+    });
+
+    it("should be able to add a task to the task list", function () {
+      hero.addTask(task_generic);
+      assert.deepStrictEqual(hero.tasks, [task_generic]);
+    });
+
   });
-
-
 
 });
