@@ -1,0 +1,16 @@
+{
+  "name": "heroes_and_rats",
+  "version": "1.0.0",
+  "description": "learning",
+  "main": "main.js",
+  "dependencies": {},
+  "devDependencies": {
+    "eslint": "^4.17.0",
+    "mocha": "^5.0.1"
+  },
+  "scripts": {
+    "test": "mocha specs"
+  },
+  "author": "DocLJN",
+  "license": "ISC"
+}
