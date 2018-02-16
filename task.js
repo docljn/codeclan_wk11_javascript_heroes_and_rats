@@ -29,8 +29,9 @@ Object.freeze(UrgencyEnum);
 
 
 
-const Task = function (description, difficulty, urgency) {
+const Task = function (description, reward, difficulty, urgency) {
   this.description = description;
+  this.reward = reward;
   this.difficulty = difficulty;
   this.urgency = urgency;
 };
