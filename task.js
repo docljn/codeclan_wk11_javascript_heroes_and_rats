@@ -66,6 +66,10 @@ Task.prototype.markCompleted = function () {
   this.completionStatus = true;
 };
 
+Task.prototype.markNotCompleted = function () {
+  this.completionStatus = false;
+};
+
 
 
 module.exports = Task;

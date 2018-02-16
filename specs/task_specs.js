@@ -108,6 +108,13 @@ describe("Task", function () {
       assert.strictEqual(actual, true);
     });
 
+    it("should be able to be marked not completed", function () {
+      task.markCompleted();
+      task.markNotCompleted();
+      const actual = task.completionStatus;
+      assert.strictEqual(actual, false);
+    });
+
 
   });
 
