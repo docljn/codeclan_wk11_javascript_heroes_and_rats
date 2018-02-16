@@ -18,7 +18,7 @@ describe("Task", function () {
   let task;
 
   beforeEach( function () {
-    task = new Task("Clean the Augean stables", "escape with your life", 5, 3);
+    task = new Task("Clean the Augean stables", 100, 5, 3);
   });
 
   it("should have a description", function () {
@@ -30,13 +30,13 @@ describe("Task", function () {
 
     it("should have a reward", function () {
       const actual = task.reward;
-      assert.strictEqual(actual, "escape with your life");
+      assert.strictEqual(actual, 100);
     });
 
-    xit("should have a default reward of negotiable"), function () {
+    xit("should have a default reward of 25"), function () {
       const task = new Task ("I'll come up with something");
       const actual = task.reward;
-      assert.strictEqual(actual, "negotiable");
+      assert.strictEqual(actual, 25);
     };
 
   });
@@ -49,19 +49,19 @@ describe("Task", function () {
     });
 
     it("should should treat a difficulty of greater than 5 as 5", function () {
-      const task = new Task ("breathe underwater", "negotiable", 15);
+      const task = new Task ("breathe underwater", 25, 15);
       const actual = task.getDifficultyLevel();
       assert.strictEqual(actual, "hardest");
     });
 
     it("should should treat a difficulty of less than 1 as 1", function () {
-      const task = new Task ("blink", "negotiable", -15);
+      const task = new Task ("blink", 25, -15);
       const actual = task.getDifficultyLevel();
       assert.strictEqual(actual, "easiest");
     });
 
     xit("should have a default difficulty level of average", function () {
-      const task = new Task ("make dinner", "negotiable");
+      const task = new Task ("make dinner", 25);
       const actual = task.getDifficultyLevel();
       assert.strictEqual(actual, "average");
     });
@@ -76,19 +76,19 @@ describe("Task", function () {
     });
 
     it("should should treat an urgency of greater than 3 as 3", function () {
-      const task = new Task ("breathe underwater", "negotiable", 15, 15);
+      const task = new Task ("breathe underwater", 25, 15, 15);
       const actual = task.getUrgencyLevel();
       assert.strictEqual(actual, "really very urgent");
     });
 
     it("should should treat an urgency of less than 1 as 1", function () {
-      const task = new Task ("blink", "negotiable", -15, -15);
+      const task = new Task ("blink", 25, -15, -15);
       const actual = task.getUrgencyLevel();
       assert.strictEqual(actual, "not urgent at all");
     });
 
     xit("should have a default urgency level of not urgent at all", function () {
-      const task = new Task ("make dinner", "negotiable");
+      const task = new Task ("make dinner", 25);
       const actual = task.getUrgencyLevel();
       assert.strictEqual(actual, "not urgent at all");
     });
