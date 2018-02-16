@@ -34,6 +34,7 @@ const Task = function (description, reward, difficulty, urgency) {
   this.reward = reward;
   this.difficulty = difficulty;
   this.urgency = urgency;
+  this.completionStatus = false;
 };
 
 /*
@@ -48,7 +49,6 @@ Task.prototype.getDifficultyLevel = function () {
   if (this.difficulty > 5) {
     this.difficulty = 5;
   }
-
   return DifficultyEnum.properties[this.difficulty].name;
 };
 
@@ -59,8 +59,11 @@ Task.prototype.getUrgencyLevel = function () {
   if (this.urgency > 3) {
     this.urgency = 3;
   }
-
   return UrgencyEnum.properties[this.urgency].name;
+};
+
+Task.prototype.markCompleted = function () {
+  this.completionStatus = true;
 };
 
 

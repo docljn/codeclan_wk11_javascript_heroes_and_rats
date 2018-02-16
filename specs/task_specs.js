@@ -95,6 +95,22 @@ describe("Task", function () {
 
   });
 
+  describe("completed status", function () {
+
+    it("should start with completed status false", function () {
+      const actual = task.completionStatus;
+      assert.strictEqual(actual, false);
+    });
+
+    it("should be able to be marked completed", function () {
+      task.markCompleted();
+      const actual = task.completionStatus;
+      assert.strictEqual(actual, true);
+    });
+
+
+  });
+
 
 
 
