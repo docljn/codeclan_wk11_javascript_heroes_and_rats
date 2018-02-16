@@ -87,11 +87,36 @@ describe("Task", function () {
       assert.strictEqual(actual, "not urgent at all");
     });
 
-    xit("should have a default urgency level of not urgent at all", function () {
+    xit("should round any non-integer input for reward", function () {
+      const task = new Task ("blink", 20.2, 1.5, 1.5);
+      assert.strictEqual(task.reward, 21);
+
+    });
+
+    xit("should round any non-integer input for difficulty", function () {
+      const task = new Task ("blink", 20.2, 1.5, 1.5);
+      assert.strictEqual(task.getDifficultyLevel(), "average");
+
+    });
+
+    xit("should round any non-integer input for urgency", function () {
+      const task = new Task ("blink", 20.2, 1.5, 1.5);
+      assert.strictEqual(task.getUrgencyLevel(), "not urgent at all");
+
+    });
+
+    xit("should have a default urgency level of not urgent at all if no urgency level is provided", function () {
       const task = new Task ("make dinner", 25);
       const actual = task.getUrgencyLevel();
       assert.strictEqual(actual, "not urgent at all");
     });
+
+    xit("should have a default urgency level of not urgent at all if a non-numeric urgency level is provided", function () {
+      const task = new Task ("make dinner", 25, "whenever");
+      const actual = task.getUrgencyLevel();
+      assert.strictEqual(actual, "not urgent at all");
+    });
+
 
   });
 
