@@ -1,4 +1,4 @@
-/*global describe, beforeEach, it, xit*/
+/*global describe, beforeEach, it*/
 /*
 A. Create a constructor to create a Hero character
 - A Hero has a name
@@ -16,13 +16,15 @@ const assert = require("assert");
 describe("Hero", function () {
 
   let hero; //means variable is scoped to describe
-  let task_generic;
+  let taskGeneric;
   let beans;
+  let marrowBones;
 
   beforeEach( function () {
-    hero = new Hero("Conan", "marrow bones");
-    task_generic = new Task("description", "reward");
+    hero = new Hero("Conan", marrowBones);
+    taskGeneric = new Task("description", "reward");
     beans = new Food("beans", 25);
+    marrowBones = new Food("marrow bones", 25);
   });
 
   it("should have a name", function () {
@@ -36,7 +38,7 @@ describe("Hero", function () {
   });
 
   it("should have a favourite food", function () {
-    const actual = hero.favouriteFood;
+    const actual = hero.favouriteFood.name;
     assert.strictEqual(actual, "marrow bones");
   });
 
@@ -53,8 +55,8 @@ describe("Hero", function () {
     });
 
     it("should be able to add a task to the task list", function () {
-      hero.addTask(task_generic);
-      assert.deepStrictEqual(hero.tasks, [task_generic]);
+      hero.addTask(taskGeneric);
+      assert.deepStrictEqual(hero.tasks, [taskGeneric]);
     });
 
   });
@@ -71,7 +73,6 @@ describe("Hero", function () {
       assert.strictEqual(hero.health, 125);
     });
 
-
     it("should not have health increasing beyond 200", function () {
       hero.eat(beans);
       hero.eat(beans);
@@ -79,6 +80,11 @@ describe("Hero", function () {
       hero.eat(beans);
       hero.eat(beans);
       assert.strictEqual(hero.health, 200);
+    });
+
+    it("should gain double health if the food eaten is the favourite food", function () {
+      hero.eat(marrowBones);
+      assert.strictEqual(hero.health, 150);
     });
   });
 
