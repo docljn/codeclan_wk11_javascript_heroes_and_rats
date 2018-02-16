@@ -40,6 +40,11 @@ describe("Hero", function () {
     assert.strictEqual(actual, "My name is Conan");
   });
 
+  it("should have a list of tasks to complete, which starts empty", function () {
+    const actual = 0;
+    assert.deepStrictEqual(actual, hero.getNumberOfTasks());
+  });
+
 
 
 });
