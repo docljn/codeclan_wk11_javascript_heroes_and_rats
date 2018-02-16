@@ -12,12 +12,27 @@ const DifficultyEnum = {
     5: {name: "hardest", value: 5}
   }
 };
-
 Object.freeze(DifficultyEnum);
 
-const Task = function (description, difficulty) {
+const UrgencyEnum = {
+  URGENT: 3,
+  SOON: 2,
+  WHENEVER: 1,
+  properties: {
+    3: {name: "really very urgent", value: 3},
+    2: {name: "slightly urgent", value: 2},
+    1: {name: "not urgent at all", value: 1}
+  }
+};
+Object.freeze(UrgencyEnum);
+
+
+
+
+const Task = function (description, difficulty, urgency) {
   this.description = description;
   this.difficulty = difficulty;
+  this.urgency = urgency;
 };
 
 /*
@@ -34,6 +49,17 @@ Task.prototype.getDifficultyLevel = function () {
   }
 
   return DifficultyEnum.properties[this.difficulty].name;
+};
+
+Task.prototype.getUrgencyLevel = function () {
+  if (this.urgency < 1) {
+    this.urgency = 1;
+  }
+  if (this.urgency > 3) {
+    this.urgency = 3;
+  }
+
+  return UrgencyEnum.properties[this.urgency].name;
 };
 
 
