@@ -25,6 +25,11 @@ describe("Hero", function () {
     assert.strictEqual(actual, "Conan");
   });
 
+  it("should start with health == 100", function () {
+    const actual = hero.health;
+    assert.strictEqual(actual, 100);
+  });
+
 
 
 });
