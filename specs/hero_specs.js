@@ -59,6 +59,32 @@ describe("Hero", function () {
       assert.deepStrictEqual(hero.tasks, [taskGeneric]);
     });
 
+    /*
+    D. Extend your hero.
+    - A hero should be able to sort their tasks by difficulty, urgency or reward.
+    - A hero should be able to view tasks that are marked as completed or incomplete.
+    */
+
+    xit("should be able to sort tasks by difficulty", function () {
+
+    });
+
+    xit("should be able to sort tasks by urgency", function () {
+
+    });
+
+    xit("should be able to sort tasks by reward", function () {
+
+    });
+
+    xit("should be able to view tasks that are completed or incomplete", function () {
+
+    });
+
+    xit("should be able to view tasks that are incomplete", function () {
+
+    });
+
   });
 
   /*
@@ -88,9 +114,6 @@ describe("Hero", function () {
     });
   });
 
-  /*
-  - A hero should be able to sort their tasks by difficulty, urgency or reward.
-  - A hero should be able to view tasks that are marked as completed or incomplete.
-  */
+
 
 });
