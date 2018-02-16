@@ -1,4 +1,4 @@
-/*global describe, beforeEach, it*/
+/*global describe, beforeEach, it, xit*/
 /*
 A. Create a constructor to create a Hero character
 - A Hero has a name
@@ -19,12 +19,29 @@ describe("Hero", function () {
   let taskGeneric;
   let beans;
   let marrowBones;
+  let task1_1_1;
+  let task2_2_2;
+  let task3_3_3;
+  let task4_4_1;
+  let task5_5_2;
+  let heroWithTasks;
 
   beforeEach( function () {
     hero = new Hero("Conan", marrowBones);
-    taskGeneric = new Task("description", "reward");
+    taskGeneric = new Task("description", 100);
+    task1_1_1 = new Task("one", 1, 1, 1);
+    task2_2_2 = new Task("two", 2, 2, 2);
+    task3_3_3 = new Task("three", 3, 3, 3);
+    task4_4_1 = new Task("four", 4, 4, 1);
+    task5_5_2 = new Task("five", 5, 5, 2);
     beans = new Food("beans", 25);
     marrowBones = new Food("marrow bones", 25);
+    heroWithTasks = new Hero("Connie", beans)
+    heroWithTasks.addTask(task3_3_3);
+    heroWithTasks.addTask(task1_1_1);
+    heroWithTasks.addTask(task5_5_2);
+    heroWithTasks.addTask(task4_4_1);
+    heroWithTasks.addTask(task2_2_2);
   });
 
   it("should have a name", function () {
@@ -42,7 +59,7 @@ describe("Hero", function () {
     assert.strictEqual(actual, "marrow bones");
   });
 
-  it("should say its name when it talks", function () {
+  it("should say their name when they talk", function () {
     const actual = hero.speak();
     assert.strictEqual(actual, "My name is Conan");
   });
@@ -65,8 +82,9 @@ describe("Hero", function () {
     - A hero should be able to view tasks that are marked as completed or incomplete.
     */
 
-    xit("should be able to sort tasks by difficulty", function () {
-
+    it("should be able to sort tasks by difficulty", function () {
+      heroWithTasks.sortByDifficulty();
+      assert.deepStrictEqual(heroWithTasks.tasks, [task1_1_1, task2_2_2, task3_3_3, task4_4_1, task5_5_2]);
     });
 
     xit("should be able to sort tasks by urgency", function () {
