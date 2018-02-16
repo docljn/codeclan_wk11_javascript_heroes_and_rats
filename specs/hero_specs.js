@@ -1,7 +1,6 @@
-/*global describe, beforeEach, it*/
+/*global describe, beforeEach, it, xit*/
 /*
 A. Create a constructor to create a Hero character
-
 - A Hero has a name
 - A Hero has health
 - A Hero has a favourite food
@@ -11,16 +10,19 @@ A. Create a constructor to create a Hero character
 
 const Hero = require("../hero.js");
 const Task = require("../task.js");
+const Food = require("../food.js");
 const assert = require("assert");
 
 describe("Hero", function () {
 
   let hero; //means variable is scoped to describe
   let task_generic;
+  let beans;
 
   beforeEach( function () {
     hero = new Hero("Conan", "marrow bones");
     task_generic = new Task("description", "reward");
+    beans = new Food("beans", 25);
   });
 
   it("should have a name", function () {
@@ -45,7 +47,6 @@ describe("Hero", function () {
 
   describe("task list", function () {
 
-
     it("should have a list of tasks to complete, which starts empty", function () {
       const actual = 0;
       assert.strictEqual(actual, hero.getNumberOfTasks());
@@ -57,5 +58,33 @@ describe("Hero", function () {
     });
 
   });
+
+  /*
+  D. Extend your hero.
+  - A hero should be able to eat food, and health should go up by the replenishment value
+  - If the food is their favourite food, their health should go up by 1.5 * value.
+  */
+
+  describe("eating", function () {
+    it("should be able to eat food, with a corresponding increase in health", function () {
+      hero.eat(beans);
+      assert.strictEqual(hero.health, 125);
+    });
+
+
+    it("should not have health increasing beyond 200", function () {
+      hero.eat(beans);
+      hero.eat(beans);
+      hero.eat(beans);
+      hero.eat(beans);
+      hero.eat(beans);
+      assert.strictEqual(hero.health, 200);
+    });
+  });
+
+  /*
+  - A hero should be able to sort their tasks by difficulty, urgency or reward.
+  - A hero should be able to view tasks that are marked as completed or incomplete.
+  */
 
 });

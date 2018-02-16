@@ -17,5 +17,12 @@ Hero.prototype.addTask = function (task) {
   this.tasks.push(task);
 };
 
+Hero.prototype.eat = function (food) {
+  this.health += food.replenishmentValue;
+  if (this.health > 200) {
+    this.health = 200;
+  }
+};
+
 
 module.exports = Hero;
