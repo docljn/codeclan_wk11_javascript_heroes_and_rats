@@ -41,6 +41,12 @@ Hero.prototype.sortTasksByReward = function () {
   });
 };
 
+Hero.prototype.sortTasksByUrgency = function () {
+  this.tasks.sort( function (firstTask, secondTask) {
+    return firstTask.urgency - secondTask.urgency;
+  });
+};
+
 /*
 arr.sort([compareFunction])
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort

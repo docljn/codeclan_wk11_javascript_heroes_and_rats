@@ -25,6 +25,7 @@ describe("Hero", function () {
   let task4_4_1;
   let task5_5_2;
   let heroWithTasks;
+  let heroWithThreeTasks;
 
   beforeEach( function () {
     hero = new Hero("Conan", marrowBones);
@@ -42,6 +43,10 @@ describe("Hero", function () {
     heroWithTasks.addTask(task5_5_2);
     heroWithTasks.addTask(task4_4_1);
     heroWithTasks.addTask(task2_2_2);
+    heroWithThreeTasks = new Hero ("Clara", beans);
+    heroWithThreeTasks.addTask(task5_5_2);
+    heroWithThreeTasks.addTask(task4_4_1);
+    heroWithThreeTasks.addTask(task3_3_3);
   });
 
   it("should have a name", function () {
@@ -92,8 +97,9 @@ describe("Hero", function () {
       assert.deepStrictEqual(heroWithTasks.tasks, [task1_1_1, task2_2_2, task3_3_3, task4_4_1, task5_5_2]);
     });
 
-    xit("should be able to sort tasks by urgency", function () {
-
+    it("should be able to sort tasks by urgency", function () {
+      heroWithThreeTasks.sortTasksByUrgency();
+      assert.deepStrictEqual(heroWithThreeTasks.tasks, [task4_4_1, task5_5_2, task3_3_3]);
     });
 
 
