@@ -52,6 +52,8 @@ describe("Hero", function () {
     rat = new Rat();
   });
 
+
+
   it("should have a name", function () {
     const actual = hero.name;
     assert.strictEqual(actual, "Conan");
@@ -161,6 +163,7 @@ describe("Hero", function () {
 
 
     });
+
   });
 
 });

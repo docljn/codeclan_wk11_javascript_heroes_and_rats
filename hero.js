@@ -31,7 +31,11 @@ Hero.prototype.eat = function (food) {
 
 /*
 I think this is what I need to DRY up the code: https://davidwalsh.name/javascript-functions
+OR
+https://stackoverflow.com/questions/14491695/js-sort-custom-function-how-can-i-pass-more-parameters
 */
+
+
 
 Hero.prototype.sortTasksByDifficulty = function () {
   this.tasks.sort( function (firstTask, secondTask) {
@@ -51,6 +55,11 @@ Hero.prototype.sortTasksByUrgency = function () {
   });
 };
 
+
+/*
+http://adripofjavascript.com/blog/drips/filtering-arrays-with-array-filter.html
+*/
+
 Hero.prototype.getCompletedTasks = function () {
   function isCompleted(task) {
     return task.completionStatus;
@@ -65,11 +74,5 @@ Hero.prototype.getUncompletedTasks = function () {
   return this.tasks.filter(isNotCompleted);
 };
 // CARE: you don't call the isCompleted function immediately in filter - filter uses it later, hence you DON'T put the brackets at the end.
-
-/*
-arr.sort([compareFunction])
-https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
-*/
-
 
 module.exports = Hero;
