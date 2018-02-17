@@ -29,6 +29,10 @@ Hero.prototype.eat = function (food) {
   }
 };
 
+/*
+I think this is what I need to DRY up the code: https://davidwalsh.name/javascript-functions
+*/
+
 Hero.prototype.sortTasksByDifficulty = function () {
   this.tasks.sort( function (firstTask, secondTask) {
     return firstTask.difficulty - secondTask.difficulty;
