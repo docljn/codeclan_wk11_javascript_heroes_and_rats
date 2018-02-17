@@ -11,6 +11,7 @@ A. Create a constructor to create a Hero character
 const Hero = require("../hero.js");
 const Task = require("../task.js");
 const Food = require("../food.js");
+const Rat = require("../rat.js");
 const assert = require("assert");
 
 describe("Hero", function () {
@@ -26,6 +27,7 @@ describe("Hero", function () {
   let task5_5_2;
   let heroWithTasks;
   let heroWithThreeTasks;
+  let rat;
 
   beforeEach( function () {
     hero = new Hero("Conan", marrowBones);
@@ -47,6 +49,7 @@ describe("Hero", function () {
     heroWithThreeTasks.addTask(task5_5_2);
     heroWithThreeTasks.addTask(task4_4_1);
     heroWithThreeTasks.addTask(task3_3_3);
+    rat = new Rat();
   });
 
   it("should have a name", function () {
@@ -122,7 +125,7 @@ describe("Hero", function () {
   - If the food is their favourite food, their health should go up by 1.5 * value.
   */
 
-  describe("eating", function () {
+  describe("eating food", function () {
     it("should be able to eat food, with a corresponding increase in health", function () {
       hero.eat(beans);
       assert.strictEqual(hero.health, 125);
@@ -140,6 +143,17 @@ describe("Hero", function () {
     it("should gain 1.5 times normal health if the food eaten is the favourite food", function () {
       hero.eat(marrowBones);
       assert.strictEqual(hero.health, 138);
+    });
+
+    describe("eating poison", function () {
+
+
+      it("should lose health if eating rat-touched food", function () {
+        rat.touch(beans);
+        hero.eat(beans);
+        assert.strictEqual(hero.health, 75);
+      });
+
     });
   });
 
