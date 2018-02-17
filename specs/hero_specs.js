@@ -82,7 +82,7 @@ describe("Hero", function () {
     - A hero should be able to view tasks that are marked as completed or incomplete.
     */
 
-    xit("should be able to sort tasks by reward", function () {
+    it("should be able to sort tasks by reward", function () {
       heroWithTasks.sortTasksByReward();
       assert.deepStrictEqual(heroWithTasks.tasks, [task1_1_1, task2_2_2, task3_3_3, task4_4_1, task5_5_2]);
     });
