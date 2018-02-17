@@ -147,12 +147,18 @@ describe("Hero", function () {
 
     describe("eating poison", function () {
 
-
       it("should lose health if eating rat-touched food", function () {
         rat.touch(beans);
         hero.eat(beans);
         assert.strictEqual(hero.health, 75);
       });
+
+      it("should lose only the standard amount of health if eating rat-touched favourite food", function () {
+        rat.touch(marrowBones);
+        hero.eat(marrowBones);
+        assert.strictEqual(hero.health, 75);
+      });
+
 
     });
   });
