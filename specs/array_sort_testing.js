@@ -94,4 +94,12 @@ describe("EXPERIMENTAL Sorting Arrays", function () {
     assert.deepStrictEqual(arrayOfObjects.sort(propertyComparator('reward')), [task1_1_1, task2_2_2, task3_3_3, task4_4_1, task5_5_2]);
   });
 
+  it("should be sortable by a selected key: 'urgency' using a function generator", function () {
+    assert.deepStrictEqual(arrayOfObjects.sort(propertyComparator('urgency')), [task1_1_1, task4_4_1, task2_2_2, task5_5_2, task3_3_3]);
+  });
+
+  it("should be sortable by a selected key: 'difficulty' using a function generator", function () {
+    assert.deepStrictEqual(arrayOfObjects.sort(propertyComparator('difficulty')), [task1_1_1, task2_2_2, task3_3_3, task4_4_1, task5_5_2]);
+  });
+
 });
