@@ -47,6 +47,21 @@ Hero.prototype.sortTasksByUrgency = function () {
   });
 };
 
+Hero.prototype.getCompletedTasks = function () {
+  function isCompleted(task) {
+    return task.completionStatus;
+  }
+  return this.tasks.filter(isCompleted);
+};
+
+Hero.prototype.getUncompletedTasks = function () {
+  function isNotCompleted(task) {
+    return !task.completionStatus;
+  }
+  return this.tasks.filter(isNotCompleted);
+};
+// CARE: you don't call the isCompleted function immediately in filter - filter uses it later, hence you DON'T put the brackets at the end.
+
 /*
 arr.sort([compareFunction])
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort

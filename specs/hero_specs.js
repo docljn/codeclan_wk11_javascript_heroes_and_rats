@@ -103,14 +103,17 @@ describe("Hero", function () {
     });
 
 
-    xit("should be able to view tasks that are completed or incomplete", function () {
-
+    it("should be able to view tasks that are completed", function () {
+      heroWithTasks.tasks[0].markCompleted();
+      heroWithTasks.tasks[3].markCompleted();
+      assert.deepStrictEqual(heroWithTasks.getCompletedTasks(), [task3_3_3, task4_4_1]);
     });
 
-    xit("should be able to view tasks that are incomplete", function () {
-
+    it("should be able to view tasks that are incomplete", function () {
+      heroWithTasks.tasks[0].markCompleted();
+      heroWithTasks.tasks[3].markCompleted();
+      assert.deepStrictEqual(heroWithTasks.getUncompletedTasks(), [task1_1_1, task5_5_2, task2_2_2]);
     });
-
   });
 
   /*
