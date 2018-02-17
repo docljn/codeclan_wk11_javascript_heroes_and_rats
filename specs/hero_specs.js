@@ -36,7 +36,7 @@ describe("Hero", function () {
     task5_5_2 = new Task("five", 5, 5, 2);
     beans = new Food("beans", 25);
     marrowBones = new Food("marrow bones", 25);
-    heroWithTasks = new Hero("Connie", beans)
+    heroWithTasks = new Hero("Connie", beans);
     heroWithTasks.addTask(task3_3_3);
     heroWithTasks.addTask(task1_1_1);
     heroWithTasks.addTask(task5_5_2);
@@ -82,8 +82,13 @@ describe("Hero", function () {
     - A hero should be able to view tasks that are marked as completed or incomplete.
     */
 
+    xit("should be able to sort tasks by reward", function () {
+      heroWithTasks.sortTasksByReward();
+      assert.deepStrictEqual(heroWithTasks.tasks, [task1_1_1, task2_2_2, task3_3_3, task4_4_1, task5_5_2]);
+    });
+
     it("should be able to sort tasks by difficulty", function () {
-      heroWithTasks.sortByDifficulty();
+      heroWithTasks.sortTasksByDifficulty();
       assert.deepStrictEqual(heroWithTasks.tasks, [task1_1_1, task2_2_2, task3_3_3, task4_4_1, task5_5_2]);
     });
 
@@ -91,9 +96,6 @@ describe("Hero", function () {
 
     });
 
-    xit("should be able to sort tasks by reward", function () {
-
-    });
 
     xit("should be able to view tasks that are completed or incomplete", function () {
 
@@ -131,7 +133,5 @@ describe("Hero", function () {
       assert.strictEqual(hero.health, 138);
     });
   });
-
-
 
 });

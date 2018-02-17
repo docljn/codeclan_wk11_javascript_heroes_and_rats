@@ -21,13 +21,24 @@ Hero.prototype.eat = function (food) {
   let foodValue = food.replenishmentValue;
   if (food.name === this.favouriteFood.name) {
     foodValue *= 3/2;
-    foodValue = Math.round(foodValue);
   }
+  foodValue = Math.round(foodValue);
   this.health += foodValue;
   if (this.health > 200) {
     this.health = 200;
   }
 };
+
+Hero.prototype.sortTasksByDifficulty = function () {
+  this.tasks.sort( function (firstTask, secondTask) {
+    return firstTask.difficulty - secondTask.difficulty;
+  });
+};
+
+/*
+arr.sort([compareFunction])
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
+*/
 
 
 module.exports = Hero;

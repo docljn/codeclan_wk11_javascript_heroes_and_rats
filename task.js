@@ -33,7 +33,9 @@ const Task = function (description, reward, difficulty, urgency) {
   this.description = description;
   this.reward = reward;
   this.difficulty = difficulty;
+  this.difficultyDataCleansing();
   this.urgency = urgency;
+  this.urgencyDataCleansing();
   this.completionStatus = false;
 };
 
@@ -41,24 +43,30 @@ const Task = function (description, reward, difficulty, urgency) {
 https://stijndewitt.com/2014/01/26/enums-in-javascript/
 */
 
-
-Task.prototype.getDifficultyLevel = function () {
+Task.prototype.difficultyDataCleansing = function () {
   if (this.difficulty < 1) {
     this.difficulty = 1;
   }
   if (this.difficulty > 5) {
     this.difficulty = 5;
   }
-  return DifficultyEnum.properties[this.difficulty].name;
 };
 
-Task.prototype.getUrgencyLevel = function () {
+Task.prototype.urgencyDataCleansing = function () {
   if (this.urgency < 1) {
     this.urgency = 1;
   }
   if (this.urgency > 3) {
     this.urgency = 3;
   }
+};
+
+
+Task.prototype.getDifficultyLevel = function () {
+  return DifficultyEnum.properties[this.difficulty].name;
+};
+
+Task.prototype.getUrgencyLevel = function () {
   return UrgencyEnum.properties[this.urgency].name;
 };
 

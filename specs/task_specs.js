@@ -39,6 +39,10 @@ describe("Task", function () {
       assert.strictEqual(actual, 25);
     };
 
+    xit("should be able to deal with non-integer reward input", function () {
+      
+    });
+
   });
 
   describe("difficulty level", function () {
