@@ -32,6 +32,7 @@ Object.freeze(UrgencyEnum);
 const Task = function (description, reward, difficulty, urgency) {
   this.description = description;
   this.reward = reward;
+  this.rewardDataCleansing();
   this.difficulty = difficulty;
   this.difficultyDataCleansing();
   this.urgency = urgency;
@@ -58,6 +59,12 @@ Task.prototype.urgencyDataCleansing = function () {
   }
   if (this.urgency > 3) {
     this.urgency = 3;
+  }
+};
+
+Task.prototype.rewardDataCleansing = function () {
+  if ((this.reward === undefined) || (typeof(this.reward) != 'number') || (this.reward < 1)) {
+    this.reward = 1;
   }
 };
 

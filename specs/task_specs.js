@@ -33,14 +33,22 @@ describe("Task", function () {
       assert.strictEqual(actual, 100);
     });
 
-    xit("should have a default reward of 25"), function () {
+    it("should have a default reward of 1", function () {
       const task = new Task ("I'll come up with something");
       const actual = task.reward;
-      assert.strictEqual(actual, 25);
-    };
+      assert.strictEqual(actual, 1);
+    });
 
-    xit("should be able to deal with non-integer reward input", function () {
-      
+    it("should set any negative reward amount to 1", function () {
+      const task = new Task ("I'll come up with something", -20);
+      const actual = task.reward;
+      assert.strictEqual(actual, 1);
+    });
+
+    it("should be able to deal with non-integer reward input", function () {
+      const task = new Task ("I'll come up with something", "negotiable");
+      const actual = task.reward;
+      assert.strictEqual(actual, 1);
     });
 
   });
