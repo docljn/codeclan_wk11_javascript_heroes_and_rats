@@ -51,10 +51,9 @@ describe("Task", function () {
       assert.strictEqual(actual, 1);
     });
 
-    it("should be able to deal with non-integer reward input", function () {
-      const newTask = new Task ("I'll come up with something", 45.7);
-      const actual = newTask.reward;
-      assert.strictEqual(actual, 46);
+    it("should round any non-integer input for reward", function () {
+      const task = new Task ("blink", 20.7, 1.5, 1.5);
+      assert.strictEqual(task.reward, 21);
     });
 
   });
@@ -78,10 +77,15 @@ describe("Task", function () {
       assert.strictEqual(actual, "easiest");
     });
 
-    xit("should have a default difficulty level of average", function () {
+    xit("should have a default difficulty level of average [3]", function () {
       const task = new Task ("make dinner", 25);
       const actual = task.getDifficultyLevel();
       assert.strictEqual(actual, "average");
+    });
+
+    xit("should round any non-integer input for difficulty", function () {
+      const task = new Task ("blink", 20.2, 1.2, 1.2);
+      assert.strictEqual(task.getDifficultyLevel(), "easiest");
     });
 
   });
@@ -105,37 +109,23 @@ describe("Task", function () {
       assert.strictEqual(actual, "not urgent at all");
     });
 
-    xit("should round any non-integer input for reward", function () {
-      const task = new Task ("blink", 20.2, 1.5, 1.5);
-      assert.strictEqual(task.reward, 21);
-
-    });
-
-    xit("should round any non-integer input for difficulty", function () {
-      const task = new Task ("blink", 20.2, 1.5, 1.5);
-      assert.strictEqual(task.getDifficultyLevel(), "average");
-
-    });
-
-    xit("should round any non-integer input for urgency", function () {
-      const task = new Task ("blink", 20.2, 1.5, 1.5);
+    it("should round any non-integer input for urgency", function () {
+      const task = new Task ("blink", 20.2, 1.2, 1.2);
       assert.strictEqual(task.getUrgencyLevel(), "not urgent at all");
 
     });
 
-    xit("should have a default urgency level of not urgent at all if no urgency level is provided", function () {
+    it("should have a default urgency level of not urgent at all if no urgency level is provided", function () {
       const task = new Task ("make dinner", 25);
       const actual = task.getUrgencyLevel();
       assert.strictEqual(actual, "not urgent at all");
     });
 
-    xit("should have a default urgency level of not urgent at all if a non-numeric urgency level is provided", function () {
+    it("should have a default urgency level of not urgent at all if a non-numeric urgency level is provided", function () {
       const task = new Task ("make dinner", 25, "whenever");
       const actual = task.getUrgencyLevel();
       assert.strictEqual(actual, "not urgent at all");
     });
-
-
   });
 
   describe("completed status", function () {

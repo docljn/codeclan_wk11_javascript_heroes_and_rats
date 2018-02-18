@@ -54,6 +54,12 @@ Task.prototype.difficultyDataCleansing = function () {
 };
 
 Task.prototype.urgencyDataCleansing = function () {
+  if ((this.urgency === undefined) || (typeof(this.urgency) != 'number')) {
+    this.urgency = 1;
+  }
+  if (typeof(this.urgency) === 'number'){
+    this.urgency = Math.round(this.urgency);
+  }
   if (this.urgency < 1) {
     this.urgency = 1;
   }
