@@ -27,7 +27,7 @@ function compareOnKey(key, a, b) {
   return one - two;
 }
 
-
+// use inside the configurable sort function
 function propertyComparator(property) {
   return function(a, b) {
     return a[property] - b[property];
@@ -39,25 +39,30 @@ function propertyComparator(property) {
 
 describe("EXPERIMENTAL Sorting Arrays", function () {
 
-  it("should be sortable by reward", function () {
+  it("should be sortable by reward: non-configurable sort", function () {
     assert.deepStrictEqual(arrayOfObjects.sort(compareOnReward), [task1_1_1, task2_2_2, task3_3_3, task4_4_1, task5_5_2]);
   });
 
-  it("should be sortable by a selected key: 'reward'", function () {
+  it("should be sortable by a selected key: 'reward' using .bind()", function () {
     assert.deepStrictEqual(arrayOfObjects.sort(compareOnKey.bind(null, 'reward')), [task1_1_1, task2_2_2, task3_3_3, task4_4_1, task5_5_2]);
   });
   // CARE: this DOES NOT WORK if you put "reward"
 
-  it("should be sortable by a selected key: 'reward' using a function generator", function () {
-    assert.deepStrictEqual(arrayOfObjects.sort(propertyComparator('reward')), [task1_1_1, task2_2_2, task3_3_3, task4_4_1, task5_5_2]);
-  });
+  describe("using a function generator", function () {
 
-  it("should be sortable by a selected key: 'urgency' using a function generator", function () {
-    assert.deepStrictEqual(arrayOfObjects.sort(propertyComparator('urgency')), [task1_1_1, task4_4_1, task2_2_2, task5_5_2, task3_3_3]);
-  });
 
-  it("should be sortable by a selected key: 'difficulty' using a function generator", function () {
-    assert.deepStrictEqual(arrayOfObjects.sort(propertyComparator('difficulty')), [task1_1_1, task2_2_2, task3_3_3, task4_4_1, task5_5_2]);
+    it("should be sortable by a selected key: 'reward'", function () {
+      assert.deepStrictEqual(arrayOfObjects.sort(propertyComparator('reward')), [task1_1_1, task2_2_2, task3_3_3, task4_4_1, task5_5_2]);
+    });
+
+    it("should be sortable by a selected key: 'urgency'", function () {
+      assert.deepStrictEqual(arrayOfObjects.sort(propertyComparator('urgency')), [task1_1_1, task4_4_1, task2_2_2, task5_5_2, task3_3_3]);
+    });
+
+    it("should be sortable by a selected key: 'difficulty'", function () {
+      assert.deepStrictEqual(arrayOfObjects.sort(propertyComparator('difficulty')), [task1_1_1, task2_2_2, task3_3_3, task4_4_1, task5_5_2]);
+    });
+
   });
 
 });
