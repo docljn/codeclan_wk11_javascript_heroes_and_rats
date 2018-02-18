@@ -45,6 +45,12 @@ https://stijndewitt.com/2014/01/26/enums-in-javascript/
 */
 
 Task.prototype.difficultyDataCleansing = function () {
+  if ((this.difficulty === undefined) || (typeof(this.difficulty) != 'number')) {
+    this.difficulty = 3;
+  }
+  if (typeof(this.difficulty) === 'number'){
+    this.difficulty = Math.round(this.difficulty);
+  }
   if (this.difficulty < 1) {
     this.difficulty = 1;
   }

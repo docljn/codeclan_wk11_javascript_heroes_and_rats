@@ -77,17 +77,16 @@ describe("Task", function () {
       assert.strictEqual(actual, "easiest");
     });
 
-    xit("should have a default difficulty level of average [3]", function () {
+    it("should have a default difficulty level of average [3]", function () {
       const task = new Task ("make dinner", 25);
       const actual = task.getDifficultyLevel();
       assert.strictEqual(actual, "average");
     });
 
-    xit("should round any non-integer input for difficulty", function () {
+    it("should round any non-integer input for difficulty", function () {
       const task = new Task ("blink", 20.2, 1.2, 1.2);
       assert.strictEqual(task.getDifficultyLevel(), "easiest");
     });
-
   });
 
   describe("urgency level", function () {
@@ -112,7 +111,6 @@ describe("Task", function () {
     it("should round any non-integer input for urgency", function () {
       const task = new Task ("blink", 20.2, 1.2, 1.2);
       assert.strictEqual(task.getUrgencyLevel(), "not urgent at all");
-
     });
 
     it("should have a default urgency level of not urgent at all if no urgency level is provided", function () {
@@ -127,6 +125,7 @@ describe("Task", function () {
       assert.strictEqual(actual, "not urgent at all");
     });
   });
+
 
   describe("completed status", function () {
 
