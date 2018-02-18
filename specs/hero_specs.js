@@ -1,12 +1,4 @@
 /*global describe, beforeEach, it*/
-/*
-A. Create a constructor to create a Hero character
-- A Hero has a name
-- A Hero has health
-- A Hero has a favourite food
-- A Hero can talk saying their name
-- A Hero has a collection of tasks to complete
-*/
 
 const Hero = require("../hero.js");
 const Task = require("../task.js");
@@ -15,8 +7,8 @@ const Rat = require("../rat.js");
 const assert = require("assert");
 
 describe("Hero", function () {
-
-  let hero; //means variable is scoped to describe
+  //means variables are scoped to 'describe'
+  let hero;
   let taskGeneric;
   let beans;
   let marrowBones;
@@ -86,12 +78,6 @@ describe("Hero", function () {
       assert.deepStrictEqual(hero.tasks, [taskGeneric]);
     });
 
-    /*
-    D. Extend your hero.
-    - A hero should be able to sort their tasks by difficulty, urgency or reward.
-    - A hero should be able to view tasks that are marked as completed or incomplete.
-    */
-
     it("should be able to sort tasks by selected argument: 'reward'", function () {
       heroWithTasks.sortTasks('reward');
       assert.deepStrictEqual(heroWithTasks.tasks, [task1_1_1, task2_2_2, task3_3_3, task4_4_1, task5_5_2]);
@@ -107,6 +93,16 @@ describe("Hero", function () {
       assert.deepStrictEqual(heroWithThreeTasks.tasks, [task4_4_1, task5_5_2, task3_3_3]);
     });
 
+    it("should be able to complete a task", function () {
+      heroWithThreeTasks.completeTask(task4_4_1);
+      assert.strictEqual(task4_4_1.completionStatus, true);
+    });
+
+    it("should gain points equivalent to the reward when completing a task", function () {
+      heroWithThreeTasks.completeTask(task4_4_1);
+      assert.strictEqual(heroWithThreeTasks.points, 4);
+    });
+
 
     it("should be able to view tasks that are completed", function () {
       heroWithTasks.tasks[0].markCompleted();
@@ -120,12 +116,6 @@ describe("Hero", function () {
       assert.deepStrictEqual(heroWithTasks.getCompletedTasks(false), [task1_1_1, task5_5_2, task2_2_2]);
     });
   });
-
-  /*
-  D. Extend your hero.
-  - A hero should be able to eat food, and health should go up by the replenishment value
-  - If the food is their favourite food, their health should go up by 1.5 * value.
-  */
 
   describe("eating food", function () {
     it("should be able to eat food, with a corresponding increase in health", function () {
@@ -160,7 +150,6 @@ describe("Hero", function () {
         hero.eat(marrowBones);
         assert.strictEqual(hero.health, 75);
       });
-
 
     });
 

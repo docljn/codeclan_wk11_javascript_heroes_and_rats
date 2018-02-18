@@ -2,7 +2,9 @@ const Hero = function (name, favouriteFood) {
   this.name = name;
   this.favouriteFood = favouriteFood;
   this.health = 100;
+  this.maxHealth = 200;
   this.tasks = [];
+  this.points = 0;
 };
 
 
@@ -19,6 +21,18 @@ Hero.prototype.addTask = function (task) {
   this.tasks.push(task);
 };
 
+Hero.prototype.completeTask = function (selectedTask) {
+  this.tasks.map(function (task) {
+    if (task === selectedTask) {
+      task.completionStatus = true;
+      return task;
+    } else {
+      return task;
+    }
+  });
+  this.points += selectedTask.reward;
+};
+
 Hero.prototype.eat = function (food) {
   let foodValue = food.replenishmentValue;
   if (food.name === this.favouriteFood.name && foodValue > 0 ) { // i.e. food is not poisoned
@@ -26,8 +40,8 @@ Hero.prototype.eat = function (food) {
   }
   foodValue = Math.round(foodValue);
   this.health += foodValue;
-  if (this.health > 200) {
-    this.health = 200;
+  if (this.health > this.maxHealth) {
+    this.health = this.maxHealth;
   }
 };
 
