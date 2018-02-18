@@ -37,12 +37,12 @@ reference: https://stackoverflow.com/questions/8537602/any-way-to-extend-javascr
 */
 
 // ToDo: I need this for sorting, but where to put it?
-
 function propertyComparator(property) {
   return function(a, b) {
     return a[property] - b[property];
   };
 }
+
 
 Hero.prototype.sortTasks = function (chosenProperty) {
   this.tasks.sort(propertyComparator(chosenProperty));
@@ -52,18 +52,12 @@ Hero.prototype.sortTasks = function (chosenProperty) {
 http://adripofjavascript.com/blog/drips/filtering-arrays-with-array-filter.html
 */
 
-Hero.prototype.getCompletedTasks = function () {
+
+Hero.prototype.getCompletedTasks = function (boolean) {
   function isCompleted(task) {
-    return task.completionStatus;
+    return task.completionStatus === boolean;
   }
   return this.tasks.filter(isCompleted);
-};
-
-Hero.prototype.getUncompletedTasks = function () {
-  function isNotCompleted(task) {
-    return !task.completionStatus;
-  }
-  return this.tasks.filter(isNotCompleted);
 };
 // CARE: you don't call the isCompleted function immediately in filter - filter uses it later, hence you DON'T put the brackets at the end.
 
