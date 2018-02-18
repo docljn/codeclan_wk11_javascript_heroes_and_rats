@@ -48,28 +48,6 @@ Hero.prototype.sortTasks = function (chosenProperty) {
   this.tasks.sort(propertyComparator(chosenProperty));
 };
 
-
-
-
-// Hero.prototype.sortTasksByDifficulty = function () {
-//   this.tasks.sort( function (firstTask, secondTask) {
-//     return firstTask.difficulty - secondTask.difficulty;
-//   });
-// };
-//
-// Hero.prototype.sortTasksByReward = function () {
-//   this.tasks.sort( function (firstTask, secondTask) {
-//     return firstTask.reward - secondTask.reward;
-//   });
-// };
-//
-// Hero.prototype.sortTasksByUrgency = function () {
-//   this.tasks.sort( function (firstTask, secondTask) {
-//     return firstTask.urgency - secondTask.urgency;
-//   });
-// };
-
-
 /*
 http://adripofjavascript.com/blog/drips/filtering-arrays-with-array-filter.html
 */
