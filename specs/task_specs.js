@@ -40,15 +40,21 @@ describe("Task", function () {
     });
 
     it("should set any negative reward amount to 1", function () {
-      const task = new Task ("I'll come up with something", -20);
-      const actual = task.reward;
+      const newTask = new Task ("I'll come up with something", -20);
+      const actual = newTask.reward;
+      assert.strictEqual(actual, 1);
+    });
+
+    it("should be able to deal with non-numerical reward input", function () {
+      const newTask = new Task ("I'll come up with something", "negotiable");
+      const actual = newTask.reward;
       assert.strictEqual(actual, 1);
     });
 
     it("should be able to deal with non-integer reward input", function () {
-      const task = new Task ("I'll come up with something", "negotiable");
-      const actual = task.reward;
-      assert.strictEqual(actual, 1);
+      const newTask = new Task ("I'll come up with something", 45.7);
+      const actual = newTask.reward;
+      assert.strictEqual(actual, 46);
     });
 
   });

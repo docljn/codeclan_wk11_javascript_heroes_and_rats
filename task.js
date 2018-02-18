@@ -66,6 +66,9 @@ Task.prototype.rewardDataCleansing = function () {
   if ((this.reward === undefined) || (typeof(this.reward) != 'number') || (this.reward < 1)) {
     this.reward = 1;
   }
+  if (typeof(this.reward) === 'number'){
+    this.reward = Math.round(this.reward);
+  }
 };
 
 
