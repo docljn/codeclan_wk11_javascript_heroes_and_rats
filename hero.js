@@ -30,10 +30,10 @@ Hero.prototype.eat = function (food) {
 };
 
 /*
-I think this is what I need to DRY up the code: https://davidwalsh.name/javascript-functions
-OR
-https://stackoverflow.com/questions/14491695/js-sort-custom-function-how-can-i-pass-more-parameters
+I think this is what I need to DRY up the code:
+reference: https://stackoverflow.com/questions/8537602/any-way-to-extend-javascripts-array-sort-method-to-accept-another-parameter
 */
+
 
 
 

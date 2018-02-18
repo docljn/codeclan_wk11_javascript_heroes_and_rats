@@ -37,48 +37,6 @@ function propertyComparator(property) {
 
 
 
-
-/*
-// should became something like:
-
-
-arrayOfObjects.sort(compareOn.bind(null, 'myKey'));
-
-
-//try
-arrayOfObjects.sort(compareOn.bind(null, 'myKey'));
-
-//try
-//You may add a wrapper:
-
-function compareOnKey(key) {
-return function(a, b) {
-a = parseInt(a[key], 10);
-b = parseInt(b[key], 10);
-if (a < b) return -1;
-if (a > b) return 1;
-return 0;
-};
-}
-
-
-//try
-function compareByProperty(key) {
-return function (a, b) {
-a = parseInt(a[key], 10);
-b = parseInt(b[key], 10);
-if (a < b) return -1;
-if (a > b) return 1;
-return 0;
-};
-}
-arrayOfObjects.sort(compareByProperty('myKey'));
-
-// compareByProperty('myKey') returns the function to do the comparing, which is then passed into .sort
-
-arrayOfObjects.sort(compareOnKey("myKey"));
-
-*/
 describe("EXPERIMENTAL Sorting Arrays", function () {
 
   it("should be sortable by reward", function () {
@@ -103,3 +61,7 @@ describe("EXPERIMENTAL Sorting Arrays", function () {
   });
 
 });
+
+/*
+reference: https://stackoverflow.com/questions/8537602/any-way-to-extend-javascripts-array-sort-method-to-accept-another-parameter
+*/
