@@ -1,4 +1,4 @@
-/*global describe, beforeEach, it, xit */
+/*global describe, beforeEach, it */
 /*
 B. Create a constructor to create Task objects
 
