@@ -123,7 +123,7 @@ describe("Hero", function () {
       assert.strictEqual(hero.health, 125);
     });
 
-    it("should not have health increasing beyond 200", function () {
+    it("should not have health increasing beyond maxHealth i.e. 200", function () {
       hero.eat(beans);
       hero.eat(beans);
       hero.eat(beans);
@@ -132,7 +132,7 @@ describe("Hero", function () {
       assert.strictEqual(hero.health, 200);
     });
 
-    it("should gain 1.5 times normal health if the food eaten is the favourite food", function () {
+    it("should gain 1.5 times normal health if the food eaten is the favourite food [rounded to the nearest integer]", function () {
       hero.eat(marrowBones);
       assert.strictEqual(hero.health, 138);
     });
