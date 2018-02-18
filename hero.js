@@ -5,6 +5,8 @@ const Hero = function (name, favouriteFood) {
   this.tasks = [];
 };
 
+
+
 Hero.prototype.speak = function () {
   return `My name is ${this.name}`;
 };
@@ -34,26 +36,38 @@ I think this is what I need to DRY up the code:
 reference: https://stackoverflow.com/questions/8537602/any-way-to-extend-javascripts-array-sort-method-to-accept-another-parameter
 */
 
+// ToDo: I need this for sorting, but where to put it?
 
+function propertyComparator(property) {
+  return function(a, b) {
+    return a[property] - b[property];
+  };
+}
 
-
-Hero.prototype.sortTasksByDifficulty = function () {
-  this.tasks.sort( function (firstTask, secondTask) {
-    return firstTask.difficulty - secondTask.difficulty;
-  });
+Hero.prototype.sortTasks = function (chosenProperty) {
+  this.tasks.sort(propertyComparator(chosenProperty));
 };
 
-Hero.prototype.sortTasksByReward = function () {
-  this.tasks.sort( function (firstTask, secondTask) {
-    return firstTask.reward - secondTask.reward;
-  });
-};
 
-Hero.prototype.sortTasksByUrgency = function () {
-  this.tasks.sort( function (firstTask, secondTask) {
-    return firstTask.urgency - secondTask.urgency;
-  });
-};
+
+
+// Hero.prototype.sortTasksByDifficulty = function () {
+//   this.tasks.sort( function (firstTask, secondTask) {
+//     return firstTask.difficulty - secondTask.difficulty;
+//   });
+// };
+//
+// Hero.prototype.sortTasksByReward = function () {
+//   this.tasks.sort( function (firstTask, secondTask) {
+//     return firstTask.reward - secondTask.reward;
+//   });
+// };
+//
+// Hero.prototype.sortTasksByUrgency = function () {
+//   this.tasks.sort( function (firstTask, secondTask) {
+//     return firstTask.urgency - secondTask.urgency;
+//   });
+// };
 
 
 /*
