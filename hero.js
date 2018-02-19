@@ -51,11 +51,18 @@ reference: https://stackoverflow.com/questions/8537602/any-way-to-extend-javascr
 */
 
 // ToDo: I need this for sorting, but where to put it?
-function propertyComparator(property) {
-  return function(a, b) {
+// function propertyComparator(property) {
+//   return function(a, b) {
+//     return a[property] - b[property];
+//   };
+// }
+
+const propertyComparator = function (property) {
+  return function(a,b) {
     return a[property] - b[property];
   };
-}
+};
+
 
 
 Hero.prototype.sortTasks = function (chosenProperty) {
